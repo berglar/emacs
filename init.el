@@ -3,6 +3,8 @@
 			 ("marmalade" . "https://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.org/packages/")))
 
+(server-start) ;; allows emacsclient -n <filename>
+
 ;(smartparens-global-mode t)
 ;(show-paren-mode 1)
 ;(require 'smartparens-config)

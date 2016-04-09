@@ -5,9 +5,6 @@
 			  ("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 
-;; TODO:
-;; - nerd tree
-
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 60)
@@ -29,6 +26,10 @@
 							:background "#3f3f3f" :foreground "#888")))))
 (set-face-attribute 'fringe nil :background "#3f3f3f")
 (set-fringe-mode '(1 . 1))
+
+;;neotree
+(require 'neotree)
+(global-set-key (kbd "C-x C-n") 'neotree-toggle)
 
 ;; copying path to clipboard -----
 

@@ -1,22 +1,15 @@
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-			 ("marmalade" . "https://marmalade-repo.org/packages/")
-			 ("melpa" . "http://melpa.org/packages/")))
+(setq package-archives
+			'(("gnu" . "http://elpa.gnu.org/packages/")
+			  ("marmalade" . "https://marmalade-repo.org/packages/")
+			  ("melpa" . "http://melpa.org/packages/")))
+(package-initialize)
 
 (server-start) ;; allows emacsclient -n <filename>
 
 ;(smartparens-global-mode t)
 ;(show-paren-mode 1)
 ;(require 'smartparens-config)
-
-
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "http://melpa.org/packages/")
-   t)
-  (package-initialize))
 
 (load-theme 'alect-dark t)
 
@@ -26,35 +19,17 @@
 
 (tool-bar-mode -1)
 
-;;; path matching etc
-;;;(require 'helm-config)
-;;;(helm-mode 1)
-
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
-
 
 (setq default-tab-width 2)
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 
-;;;find things fast
-(require 'find-things-fast)
-(global-set-key "\C-c\C-f" 'ftf-find-file)
-(global-set-key '[f2] 'ftf-grepsource)
-(global-set-key '[f4] 'ftf-gdb)
-(global-set-key '[f5] 'ftf-compile)
-
-;;neotree
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-
 
 ;;; Frame/Window management
 (defun make-frame-80-columns ()

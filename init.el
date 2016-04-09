@@ -29,6 +29,7 @@
  '(linum ((t (:inherit (shadow default)
 							:background "#3f3f3f" :foreground "#888")))))
 (set-face-attribute 'fringe nil :background "#3f3f3f")
+(set-fringe-mode '(1 . 1))
 
 ;; copying path to clipboard -----
 

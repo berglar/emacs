@@ -19,12 +19,15 @@
 
 (server-start) ;; allows emacsclient -n <filename>
 
+;; linums with custom background color
+;; note: change :background if change theme
+(global-linum-mode t)
+(custom-set-faces
+ '(linum ((t (:inherit (shadow default)
+							:background "#3f3f3f" :foreground "#888")))))
+(set-face-attribute 'fringe nil :background "#3f3f3f")
 
 ;;;(set-face-attribute 'default nil :height 100)
-
-
-
-
 
 ;;(setq ido-enable-flex-matching t)
 ;;(setq ido-everywhere t)
@@ -141,5 +144,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-;; test

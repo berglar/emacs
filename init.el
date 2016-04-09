@@ -5,6 +5,9 @@
 			  ("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 
+;; TODO:
+;; - nerd tree
+;; - fuzzy search find file
 
 (require 'recentf)
 (recentf-mode 1)
@@ -27,11 +30,21 @@
 							:background "#3f3f3f" :foreground "#888")))))
 (set-face-attribute 'fringe nil :background "#3f3f3f")
 
-;;;(set-face-attribute 'default nil :height 100)
+;; copying path to clipboard -----
 
-;;(setq ido-enable-flex-matching t)
-;;(setq ido-everywhere t)
-;;(ido-mode 1)
+(defun copy-file-name-to-clipboard ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
+
+(global-set-key (kbd "C-x p") 'copy-file-name-to-clipboard)
+
+;; web-mode ----------------------
 
 (setq default-tab-width 2)
 (setq web-mode-markup-indent-offset 2)

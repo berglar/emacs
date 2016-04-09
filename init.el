@@ -7,7 +7,6 @@
 
 ;; TODO:
 ;; - nerd tree
-;; - fuzzy search find file
 
 (require 'recentf)
 (recentf-mode 1)
@@ -44,6 +43,22 @@
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
 (global-set-key (kbd "C-x p") 'copy-file-name-to-clipboard)
+
+;; projectile + helm + fuzzy search
+
+(require 'helm)
+(require 'helm-config)
+(setq helm-split-window-in-side-p    t
+			helm-split-window-default-side 'helm
+			helm-mode-fuzzy-match          t
+			helm-buffers-fuzzy-match       t)
+(helm-mode 1)
+
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+(global-set-key (kbd "C-x f") 'helm-projectile-find-file)
 
 ;; web-mode ----------------------
 

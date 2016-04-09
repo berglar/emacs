@@ -20,8 +20,7 @@
 
 ;;;(set-face-attribute 'default nil :height 100)
 
-(set-face-attribute 'default nil :font  "Droid Sans Mono-al-12")
-(set-frame-font   "Droid Sans Mono-al-12" nil t)
+(set-face-attribute 'default nil :font  "Source Code Pro" :height 110)
 
 (tool-bar-mode -1)
 

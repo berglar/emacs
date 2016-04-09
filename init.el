@@ -5,23 +5,30 @@
 			  ("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 60)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+(tool-bar-mode -1)
+(set-face-attribute 'default nil :font  "Source Code Pro" :height 110)
+(load-theme 'alect-dark t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(global-auto-revert-mode 1)
+
 (server-start) ;; allows emacsclient -n <filename>
 
-;(smartparens-global-mode t)
-;(show-paren-mode 1)
-;(require 'smartparens-config)
-
-(load-theme 'alect-dark t)
 
 ;;;(set-face-attribute 'default nil :height 100)
 
-(set-face-attribute 'default nil :font  "Source Code Pro" :height 110)
 
-(tool-bar-mode -1)
 
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+
+
+;;(setq ido-enable-flex-matching t)
+;;(setq ido-everywhere t)
+;;(ido-mode 1)
 
 (setq default-tab-width 2)
 (setq web-mode-markup-indent-offset 2)
@@ -76,14 +83,14 @@
     (setq ring-bell-function `(lambda ()
       (setq visible-bell (fsm-frame-x-active-window-p (selected-frame)))
       (ding)))
-  
+
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Frame-related functions ;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; All from http://www.emacswiki.org/emacs-pt/rcircDbusNotification
-  
+
     (require 'dbus)
-  
+
     (defun fsm-x-active-window ()
       "Return the window ID of the current active window in X, as
   given by the _NET_ACTIVE_WINDOW of the root window set by the
@@ -92,14 +99,14 @@
           (let ((x-active-window (x-window-property "_NET_ACTIVE_WINDOW" nil "WINDOW" 0 nil t)))
             (string-to-number (format "%x00%x" (car x-active-window) (cdr x-active-window)) 16))
         nil))
-  
+
     (defun fsm-frame-outer-window-id (frame)
       "Return the frame outer-window-id property, or nil if FRAME not of the correct type"
       (if (framep frame)
           (string-to-number
            (frame-parameter frame 'outer-window-id))
         nil))
-  
+
     (defun fsm-frame-x-active-window-p (frame)
       "Check if FRAME is is the X active windows
   Returns t if frame has focus or nil if"
@@ -121,7 +128,7 @@
  ; (setq web-mode-css-indent-offset n) ; web-mode, css in html file
  ; (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
  ; (setq css-indent-offset n) ; css-mode
-  
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -134,3 +141,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; test
